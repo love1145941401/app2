@@ -24,7 +24,6 @@ import { mapGetters } from 'vuex';
 import uniGrid from '@/components/uni-grid/uni-grid.vue';
 import uniGridItem from '@/components/uni-grid-item/uni-grid-item.vue';
 import GoodsList from '@/components/goods-list.vue';
-import mockdata from "../../mock/mockData.js"
 export default {
 	components: {
 		uniGrid,
@@ -36,9 +35,6 @@ export default {
 		cartNum(newValue, oldValue) {
 			this.setBarBadge();
 		}
-	},
-	created() {
-			this.products=mockdata.data.products
 	},
 	data() {
 		return {
@@ -113,7 +109,7 @@ export default {
 				data: param,
 				success: res => {
 					this.totalPage = Math.ceil(res.data.len / this.pageSize);
-					// this.products = [...this.products, ...res.data.data];
+					this.products = [...this.products, ...res.data.data];
 				}
 			});
 		},
